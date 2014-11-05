@@ -1,0 +1,11 @@
+/nbproject/private/
+/node_modules/.bin/
+/node_modules/browserify/node_modules/.bin/
+/node_modules/browserify/node_modules/module-deps/node_modules/detective/node_modules/.bin/
+/node_modules/browserify/node_modules/syntax-error/node_modules/.bin/
+/node_modules/browserify/node_modules/insert-module-globals/node_modules/lexical-scope/node_modules/astw/node_modules/.bin/
+/node_modules/browserify/node_modules/umd/node_modules/.bin/
+/node_modules/browserify/node_modules/module-deps/node_modules/detective/node_modules/escodegen/node_modules/.bin/
+/node_modules/browserify/node_modules/umd/node_modules/ruglify/node_modules/.bin/
+/node_modules/browserify/node_modules/crypto-browserify/node_modules/.bin/
+/node_modules/
