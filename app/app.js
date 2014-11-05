@@ -1,9 +1,9 @@
-"use strict";
+'use strict';
 //libs
 var angular = require('angular'),
-util = require('./util/util'),
-angularRoute = require('angular-route'),
-uiBootstrap = require('angular-bootstrap'),
+  util = require('./util/util'),
+  angularRoute = require('angular-route'),
+  uiBootstrap = require('angular-bootstrap'),
 
-App = angular.module('app', ['app.avengers']);
+  App = angular.module('app', ['app.avengers']);
 module.exports = App;
