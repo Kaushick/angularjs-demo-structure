@@ -4,14 +4,14 @@
   "description": "Angular Demo",
   "main": "index.js",
   "scripts": {
-    "start": "watchify -t index.js -o build/bundle.js -v",
-    "bundle": "browserify -t index.js -o build/bundle.js"
+    "start": "watchify --entry index.js --outfile build/bundle.js -v",
+    "bundle": "browserify --entry index.js --outfile build/bundle.js"
   },
   "dependencies": {
     "jquery": "",
     "underscore": "",
     "angular": "",
-    "angular-route": "",
+    "angular-ui-router": "",
     "angular-bootstrap": ""
   },
 
@@ -19,6 +19,6 @@
     "browserify": "^5.11.2",
     "watchify": "^1.0.2"
   },
-  
+
   "author": "Innofied"
 }

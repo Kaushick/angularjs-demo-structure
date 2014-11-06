@@ -1,10 +1,10 @@
 window.name = "NG_DEFER_BOOTSTRAP!";
 
-var angular = require('angular'),
-App = require('./app/app');
-
+require('angular');
+require('angular-ui-router');
+require('angular-bootstrap');
+var App = require('./app/app');
 
 angular.element().ready(function() {
-    angular.resumeBootstrap([App['name']]);
+  angular.resumeBootstrap([App['name']]);
 });
-

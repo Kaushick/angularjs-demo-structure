@@ -5,11 +5,11 @@
     Description:
         Purpose of the stylesheet follows.
 */
-
-
 /*lib css*/
+
 @import url("bootstrap.css");
+@import url("bracket.min.css");
 @import url("font-awesome.min.css");
-
-
-
+body {
+    background: #fff !important;
+}
