@@ -4,17 +4,17 @@
   "description": "Angular Demo",
   "main": "index.js",
   "scripts": {
-    "start": "watchify --entry index.js --outfile build/bundle.js -v",
-    "bundle": "browserify --entry index.js --outfile build/bundle.js"
+    "start": "watchify -t brfs index.js -o build/bundle.js -v",
+    "bundle": "browserify -t brfs index.js -o build/bundle.js"
   },
   "dependencies": {
     "jquery": "",
     "underscore": "",
     "angular": "",
     "angular-ui-router": "",
-    "angular-bootstrap": ""
+    "angular-bootstrap": "",
+    "brfs" : ""
   },
-
   "devDependencies": {
     "browserify": "^5.11.2",
     "watchify": "^1.0.2"
