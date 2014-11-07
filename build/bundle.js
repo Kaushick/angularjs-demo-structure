@@ -1,34 +1,15 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"/var/www/apps/angular/angularjs-demo-structure/app/modules/application/app.js":[function(require,module,exports){
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"/var/www/apps/angular/angularjs-demo-structure/app/modules/application/app.module.js":[function(require,module,exports){
 'use strict';
 
 var util = require('../../util/util'),
-  avengerModule = require('../avengers/avengers.module');
+  avengerModule = require('../home/home.module');
 
-var App = angular.module('app', ['ui.router', 'ui.bootstrap', 'app.avengers'])
-  .config(require('../../router/router'));
+var App = angular.module('app', ['ui.router', 'ui.bootstrap', 'app.home'])
+  .config(require('./router/router'));
 
 module.exports = App;
 
-},{"../../router/router":"/var/www/apps/angular/angularjs-demo-structure/app/router/router.js","../../util/util":"/var/www/apps/angular/angularjs-demo-structure/app/util/util.js","../avengers/avengers.module":"/var/www/apps/angular/angularjs-demo-structure/app/modules/avengers/avengers.module.js"}],"/var/www/apps/angular/angularjs-demo-structure/app/modules/avengers/avengers.module.js":[function(require,module,exports){
-'use strict';
-
-var util = require('../../util/util'),
-  Avengers = angular.module('app.avengers', [])
-  .controller('PlaylistController', require('./controllers/playlists'));
-
-module.exports = Avengers;
-
-},{"../../util/util":"/var/www/apps/angular/angularjs-demo-structure/app/util/util.js","./controllers/playlists":"/var/www/apps/angular/angularjs-demo-structure/app/modules/avengers/controllers/playlists.js"}],"/var/www/apps/angular/angularjs-demo-structure/app/modules/avengers/controllers/playlists.js":[function(require,module,exports){
-module.exports = function($scope) {
-    
-    $scope.showConsole = function() {
-        console.log("console")
-    };
-}
-
-
-
-},{}],"/var/www/apps/angular/angularjs-demo-structure/app/router/router.js":[function(require,module,exports){
+},{"../../util/util":"/var/www/apps/angular/angularjs-demo-structure/app/util/util.js","../home/home.module":"/var/www/apps/angular/angularjs-demo-structure/app/modules/home/home.module.js","./router/router":"/var/www/apps/angular/angularjs-demo-structure/app/modules/application/router/router.js"}],"/var/www/apps/angular/angularjs-demo-structure/app/modules/application/router/router.js":[function(require,module,exports){
 (function (Buffer){
 
 
@@ -40,29 +21,60 @@ module.exports = function($stateProvider, $locationProvider, $urlRouterProvider)
         template: Buffer("PG5hdiBjbGFzcz0ibmF2YmFyIG5hdmJhci1pbnZlcnNlIiByb2xlPSJuYXZpZ2F0aW9uIj4KICA8ZGl2IGNsYXNzPSJuYXZiYXItaGVhZGVyIj4KICAgIDxhIGNsYXNzPSJuYXZiYXItYnJhbmQiIHVpLXNyZWY9IiMiPkFuZ3VsYXJVSSBSb3V0ZXI8L2E+CiAgPC9kaXY+CiAgPHVsIGNsYXNzPSJuYXYgbmF2YmFyLW5hdiI+CiAgICA8bGk+PGEgdWktc3JlZj0iLmhvbWUiPkhvbWU8L2E+CiAgICA8L2xpPgogICAgPGxpPjxhIHVpLXNyZWY9Ii5hYm91dCI+QWJvdXQ8L2E+CiAgICA8L2xpPgogIDwvdWw+CjwvbmF2PgoKCjxkaXYgY2xhc3M9ImNvbnRhaW5lciI+CiAgPGRpdiB1aS12aWV3PjwvZGl2PgoKPC9kaXY+Cg==","base64")
     })
 
-    .state('app.home', {
-        url: '/home',
-        template : Buffer("PGRpdiBjbGFzcz0ianVtYm90cm9uIHRleHQtY2VudGVyIj4KICA8aDE+VGhlIEhvbWV5IFBhZ2U8L2gxPgogIDxwPlRoaXMgcGFnZSBkZW1vbnN0cmF0ZXMKICAgIDxzcGFuIGNsYXNzPSJ0ZXh0LWRhbmdlciI+bmVzdGVkPC9zcGFuPnZpZXdzLjwvcD4KCiAgPGEgdWktc3JlZj0iLmxpc3QiIGNsYXNzPSJidG4gYnRuLXByaW1hcnkiPkxpc3Q8L2E+CiAgPGEgdWktc3JlZj0iLnBhcmFncmFwaCIgY2xhc3M9ImJ0biBidG4tZGFuZ2VyIj5QYXJhZ3JhcGg8L2E+CjwvZGl2PgoKCjxkaXYgdWktdmlldz48L2Rpdj4K","base64")
-    })
-
-    .state('app.home.list', {
-        url: '/list',
-        template : Buffer("PGRpdj4KCiAgPGRpdiBjbGFzcz0icGFnZWhlYWRlciI+CiAgICA8aDI+CiAgICAgIDxpIGNsYXNzPSJmYSBmYS1saXN0Ij48L2k+CiAgICAgIFBsYXlsaXN0cwogICAgPC9oMj4KCiAgPC9kaXY+CgogIDx1bD4KICAgIDxsaSBuZy1yZXBlYXQ9ImRvZyBpbiBkb2dzIj57eyBkb2cgfX08L2xpPgogIDwvdWw+CgogIDxhIG5nLWNsaWNrPSJzaG93Q29uc29sZSgpIiBjbGFzcz0iYnRuIGJ0bi1kYW5nZXIiPlBhcmFncmFwaDwvYT4KPC9kaXY+CjwvZGl2Pgo=","base64"),
-        controller : 'PlaylistController'
-    })
-
     .state('app.about', {
         url: '/about',
         template: '<h1>gdgfsdf</h1>'
     })
 
+    $urlRouterProvider.otherwise('/app');
+     
+}
+
+
+}).call(this,require("buffer").Buffer)
+},{"buffer":"/var/www/apps/angular/angularjs-demo-structure/node_modules/browserify/node_modules/buffer/index.js"}],"/var/www/apps/angular/angularjs-demo-structure/app/modules/home/controllers/playlists.js":[function(require,module,exports){
+module.exports = function($scope) {
+    
+    $scope.showConsole = function() {
+        console.log("console")
+    };
+}
+
+
+
+},{}],"/var/www/apps/angular/angularjs-demo-structure/app/modules/home/home.module.js":[function(require,module,exports){
+'use strict';
+
+var util = require('../../util/util'),
+  Avengers = angular.module('app.home', [])
+  .controller('PlaylistController', require('./controllers/playlists'))
+   .config(require('./router/router'));
+
+module.exports = Avengers;
+
+},{"../../util/util":"/var/www/apps/angular/angularjs-demo-structure/app/util/util.js","./controllers/playlists":"/var/www/apps/angular/angularjs-demo-structure/app/modules/home/controllers/playlists.js","./router/router":"/var/www/apps/angular/angularjs-demo-structure/app/modules/home/router/router.js"}],"/var/www/apps/angular/angularjs-demo-structure/app/modules/home/router/router.js":[function(require,module,exports){
+(function (Buffer){
+
+
+module.exports = function($stateProvider, $locationProvider, $urlRouterProvider) {
+    $stateProvider
+     .state('app.home', {
+        url: '/home',
+        template : Buffer("PGRpdiBjbGFzcz0ianVtYm90cm9uIHRleHQtY2VudGVyIj4KICA8aDE+VGhlIEhvbWV5IFBhZ2U8L2gxPgogIDxwPlRoaXMgcGFnZSBkZW1vbnN0cmF0ZXMKICAgIDxzcGFuIGNsYXNzPSJ0ZXh0LWRhbmdlciI+bmVzdGVkPC9zcGFuPnZpZXdzLjwvcD4KCiAgPGEgdWktc3JlZj0iLmxpc3QiIGNsYXNzPSJidG4gYnRuLXByaW1hcnkiPkxpc3Q8L2E+CiAgPGEgdWktc3JlZj0iLnBhcmFncmFwaCIgY2xhc3M9ImJ0biBidG4tZGFuZ2VyIj5QYXJhZ3JhcGg8L2E+CjwvZGl2PgoKCjxkaXYgdWktdmlldz48L2Rpdj4K","base64")
+    })
+    .state('app.home.list', {
+        url: '/list',
+        template : Buffer("PGRpdj4KCiAgPGRpdiBjbGFzcz0icGFnZWhlYWRlciI+CiAgICA8aDI+CiAgICAgIDxpIGNsYXNzPSJmYSBmYS1saXN0Ij48L2k+CiAgICAgIFBsYXlsaXN0cwogICAgPC9oMj4KCiAgPC9kaXY+CgogIDx1bD4KICAgIDxsaSBuZy1yZXBlYXQ9ImRvZyBpbiBkb2dzIj57eyBkb2cgfX08L2xpPgogIDwvdWw+CgogIDxhIG5nLWNsaWNrPSJzaG93Q29uc29sZSgpIiBjbGFzcz0iYnRuIGJ0bi1kYW5nZXIiPlBhcmFncmFwaDwvYT4KPC9kaXY+CjwvZGl2Pgo=","base64"),
+        controller : 'PlaylistController'
+    })
     // nested list with just some random string data
     .state('app.home.paragraph', {
         url: '/paragraph',
         template: 'I could sure use a drink right now.'
     })
+ 
 
-    $urlRouterProvider.otherwise('/app');
+   // $urlRouterProvider.otherwise('/app');
      
 }
 
@@ -100,13 +112,13 @@ window.name = "NG_DEFER_BOOTSTRAP!";
 require('angular');
 require('angular-ui-router');
 require('angular-bootstrap');
-var App = require('./app/modules/application/app');
+var App = require('./app/modules/application/app.module');
 
 angular.element().ready(function() {
   angular.resumeBootstrap([App['name']]);
 });
 
-},{"./app/modules/application/app":"/var/www/apps/angular/angularjs-demo-structure/app/modules/application/app.js","angular":"/var/www/apps/angular/angularjs-demo-structure/node_modules/angular/angular.js","angular-bootstrap":"/var/www/apps/angular/angularjs-demo-structure/node_modules/angular-bootstrap/ui-bootstrap.js","angular-ui-router":"/var/www/apps/angular/angularjs-demo-structure/node_modules/angular-ui-router/release/angular-ui-router.js"}],"/var/www/apps/angular/angularjs-demo-structure/node_modules/angular-bootstrap/ui-bootstrap.js":[function(require,module,exports){
+},{"./app/modules/application/app.module":"/var/www/apps/angular/angularjs-demo-structure/app/modules/application/app.module.js","angular":"/var/www/apps/angular/angularjs-demo-structure/node_modules/angular/angular.js","angular-bootstrap":"/var/www/apps/angular/angularjs-demo-structure/node_modules/angular-bootstrap/ui-bootstrap.js","angular-ui-router":"/var/www/apps/angular/angularjs-demo-structure/node_modules/angular-ui-router/release/angular-ui-router.js"}],"/var/www/apps/angular/angularjs-demo-structure/node_modules/angular-bootstrap/ui-bootstrap.js":[function(require,module,exports){
 /*
  * angular-ui-bootstrap
  * http://angular-ui.github.io/bootstrap/
