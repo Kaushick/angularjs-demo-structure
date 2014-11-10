@@ -409,11 +409,12 @@ module.exports = function($scope) {
 'use strict';
 
 var util = require('../../util/util'),
-  Avengers = angular.module('app.home', [])
+
+  Home = angular.module('app.home', ['ui.router', 'ui.bootstrap'])
   .controller('PlaylistController', require('./controllers/playlists'))
   .config(require('./router/router'));
 
-module.exports = Avengers;
+module.exports = Home;
 
 },{"../../util/util":"/var/www/MyProjects/study/angular/angularjs-demo-structure/app/util/util.js","./controllers/playlists":"/var/www/MyProjects/study/angular/angularjs-demo-structure/app/modules/home/controllers/playlists.js","./router/router":"/var/www/MyProjects/study/angular/angularjs-demo-structure/app/modules/home/router/router.js"}],"/var/www/MyProjects/study/angular/angularjs-demo-structure/app/modules/home/router/router.js":[function(require,module,exports){
 (function (Buffer){
@@ -435,9 +436,6 @@ module.exports = function($stateProvider, $locationProvider, $urlRouterProvider)
         url: '/paragraph',
         template: 'I could sure use a drink right now.'
     })
- 
-
-   // $urlRouterProvider.otherwise('/app');
      
 }
 
