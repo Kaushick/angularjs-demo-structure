@@ -16,9 +16,6 @@ module.exports = function($stateProvider, $locationProvider, $urlRouterProvider)
         url: '/paragraph',
         template: 'I could sure use a drink right now.'
     })
- 
-
-   // $urlRouterProvider.otherwise('/app');
      
 }
 

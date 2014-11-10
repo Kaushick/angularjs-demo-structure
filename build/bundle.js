@@ -46,11 +46,11 @@ module.exports = function($scope) {
 'use strict';
 
 var util = require('../../util/util'),
-  Avengers = angular.module('app.home', [])
-  .controller('PlaylistController', require('./controllers/playlists'))
-   .config(require('./router/router'));
+Home = angular.module('app.home', ['ui.router', 'ui.bootstrap'])
+.controller('PlaylistController', require('./controllers/playlists'))
+.config(require('./router/router'));
 
-module.exports = Avengers;
+module.exports = Home;
 
 },{"../../util/util":"/var/www/apps/angular/angularjs-demo-structure/app/util/util.js","./controllers/playlists":"/var/www/apps/angular/angularjs-demo-structure/app/modules/home/controllers/playlists.js","./router/router":"/var/www/apps/angular/angularjs-demo-structure/app/modules/home/router/router.js"}],"/var/www/apps/angular/angularjs-demo-structure/app/modules/home/router/router.js":[function(require,module,exports){
 (function (Buffer){
