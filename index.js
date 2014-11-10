@@ -1,5 +1,11 @@
 window.name = "NG_DEFER_BOOTSTRAP!";
 
+window._ = require('underscore');
+// window.$ = require('jquery');
+window.lang = require('./app/lang/lang');
+// window.validator = require('jquery-validation');
+
+require('validator');
 require('angular');
 require('angular-ui-router');
 require('angular-bootstrap');

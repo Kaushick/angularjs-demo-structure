@@ -7,18 +7,36 @@
     "start": "watchify -t brfs index.js -o build/bundle.js -v",
     "bundle": "browserify -t brfs index.js -o build/bundle.js"
   },
+  "browser": {
+    "jQuery": "./bower_components/jquery/dist/jquery.js",
+    "validator": "./bower_components/jquery-validation/dist/jquery.validate.js"
+  },
+  "browserify-shim": {
+    "jQuery": {
+      "exports": "jQuery"
+    },
+    "validator": {
+      "depends": ["jQuery"],
+      "exports": "validator"
+    }
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
   "dependencies": {
-    "jquery": "",
-    "underscore": "",
     "angular": "",
-    "angular-ui-router": "",
     "angular-bootstrap": "",
-    "brfs" : ""
+    "angular-ui-router": "",
+    "brfs": "",
+    "browserify-shim": "",
+    "jquery": "",
+    "underscore": ""
   },
   "devDependencies": {
     "browserify": "^5.11.2",
     "watchify": "^1.0.2"
   },
-
   "author": "Innofied"
 }
