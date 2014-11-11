@@ -46,53 +46,53 @@ module.exports = function($scope, $http, $location, $modal) {
 
   $scope.doSignIn = function() {
     $scope.loading = true;
-    if ($('#signin').valid()) {
-      $http.post(util.api.login, {
-        email: $scope.loginCredentials.email,
-        password: MD5($scope.loginCredentials.password),
-        //password: $scope.loginCredentials.password,
-        secure: true
-          //secure: false
-      }).success(function(response) {
-        if (response.success) {
-          $scope.loading = false;
-          util.loggedInUser = response.data;
-          if (util.loggedInUser.firstTime) {
-            util.instances.modal = $modal.open({
-              templateUrl: 'app/modules/user/views/changepassword.html',
-              size: ''
-            });
-          } else {
-            $location.path('/employees/list');
-          }
+    // if ($('#signin').valid()) {
+    $http.post(util.api.login, {
+      email: $scope.loginCredentials.email,
+      password: MD5($scope.loginCredentials.password),
+      //password: $scope.loginCredentials.password,
+      secure: true
+        //secure: false
+    }).success(function(response) {
+      if (response.success) {
+        $scope.loading = false;
+        util.loggedInUser = response.data;
+        if (util.loggedInUser.firstTime) {
+          util.instances.modal = $modal.open({
+            templateUrl: 'app/modules/user/views/changepassword.html',
+            size: ''
+          });
         } else {
-          $scope.loading = false;
-          if (response.errors && response.errors.length > 0) {
-            $scope.errors = [lang.networkError];
-            $scope.showErrors = true;
-            util.errorMessageTimeout({
-              success: function() {
-
-                $scope.errors = [];
-                $scope.showErrors = false;
-                $scope.$apply();
-              }
-            });
-          } else {
-            $scope.errors = _.values(response.errfor);
-            $scope.showErrors = true;
-            util.errorMessageTimeout({
-              success: function() {
-
-                $scope.errors = [];
-                $scope.showErrors = false;
-                $scope.$apply();
-              }
-            });
-          }
+          $location.path('/employees/list');
         }
-      }).error(function() {});
-    }
+      } else {
+        $scope.loading = false;
+        if (response.errors && response.errors.length > 0) {
+          $scope.errors = [lang.networkError];
+          $scope.showErrors = true;
+          util.errorMessageTimeout({
+            success: function() {
+
+              $scope.errors = [];
+              $scope.showErrors = false;
+              $scope.$apply();
+            }
+          });
+        } else {
+          $scope.errors = _.values(response.errfor);
+          $scope.showErrors = true;
+          util.errorMessageTimeout({
+            success: function() {
+
+              $scope.errors = [];
+              $scope.showErrors = false;
+              $scope.$apply();
+            }
+          });
+        }
+      }
+    }).error(function() {});
+    // }
   };
   /*
   $scope.$watch('errors', function(value) {
