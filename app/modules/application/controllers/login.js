@@ -11,29 +11,29 @@ module.exports = function($scope, $http, $location, $modal) {
   /**
    * Form Validator cofig start
    */
-  /* jquery('#signin').validate({
-     rules: {
-       password: 'required',
-       email: {
-         required: true,
-         email: true
-       }
-     },
-     messages: {
-       password: lang.validationMessages.password,
-       email: {
-         required: lang.validationMessages.email.required,
-         email: lang.validationMessages.email.email,
-       }
-     },
-     highlight: function(element) {
-       jquery(element).closest('.form-control').removeClass('has-success').addClass('has-error');
-     },
-     success: function(element) {
-       jquery(element).closest('.form-control').removeClass('has-error');
-       jquery(element).closest('label').remove();
-     }
-   });*/
+  $('#signin').validate({
+    rules: {
+      password: 'required',
+      email: {
+        required: true,
+        email: true
+      }
+    },
+    messages: {
+      password: lang.validationMessages.password,
+      email: {
+        required: lang.validationMessages.email.required,
+        email: lang.validationMessages.email.email,
+      }
+    },
+    highlight: function(element) {
+      $(element).closest('.form-control').removeClass('has-success').addClass('has-error');
+    },
+    success: function(element) {
+      $(element).closest('.form-control').removeClass('has-error');
+      $(element).closest('label').remove();
+    }
+  });
   /**
    * Form Validator cofig end
    */
@@ -45,54 +45,55 @@ module.exports = function($scope, $http, $location, $modal) {
   $scope.errors = [];
 
   $scope.doSignIn = function() {
-    $scope.loading = true;
-    // if ($('#signin').valid()) {
-    $http.post(util.api.login, {
-      email: $scope.loginCredentials.email,
-      password: MD5($scope.loginCredentials.password),
-      //password: $scope.loginCredentials.password,
-      secure: true
-        //secure: false
-    }).success(function(response) {
-      if (response.success) {
-        $scope.loading = false;
-        util.loggedInUser = response.data;
-        if (util.loggedInUser.firstTime) {
-          util.instances.modal = $modal.open({
-            templateUrl: 'app/modules/user/views/changepassword.html',
-            size: ''
-          });
-        } else {
-          $location.path('/employees/list');
-        }
-      } else {
-        $scope.loading = false;
-        if (response.errors && response.errors.length > 0) {
-          $scope.errors = [lang.networkError];
-          $scope.showErrors = true;
-          util.errorMessageTimeout({
-            success: function() {
 
-              $scope.errors = [];
-              $scope.showErrors = false;
-              $scope.$apply();
-            }
-          });
+    if ($('#signin').valid()) {
+      $scope.loading = true;
+      $http.post(util.api.login, {
+        email: $scope.loginCredentials.email,
+        password: MD5($scope.loginCredentials.password),
+        //password: $scope.loginCredentials.password,
+        secure: true
+          //secure: false
+      }).success(function(response) {
+        if (response.success) {
+          $scope.loading = false;
+          util.loggedInUser = response.data;
+          if (util.loggedInUser.firstTime) {
+            util.instances.modal = $modal.open({
+              templateUrl: 'app/modules/user/views/changepassword.html',
+              size: ''
+            });
+          } else {
+            $location.path('/employees/list');
+          }
         } else {
-          $scope.errors = _.values(response.errfor);
-          $scope.showErrors = true;
-          util.errorMessageTimeout({
-            success: function() {
+          $scope.loading = false;
+          if (response.errors && response.errors.length > 0) {
+            $scope.errors = [lang.networkError];
+            $scope.showErrors = true;
+            util.errorMessageTimeout({
+              success: function() {
 
-              $scope.errors = [];
-              $scope.showErrors = false;
-              $scope.$apply();
-            }
-          });
+                $scope.errors = [];
+                $scope.showErrors = false;
+                $scope.$apply();
+              }
+            });
+          } else {
+            $scope.errors = _.values(response.errfor);
+            $scope.showErrors = true;
+            util.errorMessageTimeout({
+              success: function() {
+
+                $scope.errors = [];
+                $scope.showErrors = false;
+                $scope.$apply();
+              }
+            });
+          }
         }
-      }
-    }).error(function() {});
-    // }
+      }).error(function() {});
+    }
   };
   /*
   $scope.$watch('errors', function(value) {

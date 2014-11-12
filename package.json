@@ -14,11 +14,30 @@
     "brfs": "",
     "browserify-shim": "",
     "jquery": "",
-    "underscore": ""
+    "underscore": "",
+    "MD5": ""
   },
   "devDependencies": {
     "browserify": "^5.11.2",
     "watchify": "^1.0.2"
+  },
+  "browser": {
+    "jQuery": "./bower_components/jquery/dist/jquery.js",
+    "jqueryValidation": "./bower_components/jquery-validation/dist/jquery.validate.js"
+  },
+  "browserify-shim": {
+    "jQuery": {
+      "exports": "$"
+    },
+    "jqueryValidation": {
+      "exports": "jqueryValidation",
+      "depends": ["jQuery"]
+    }
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
   },
   "author": "Innofied"
 }
